@@ -1,9 +1,17 @@
-stop = ""
+import requests, os
+from dotenv import load_dotenv
 
-while True:
+load_dotenv()
 
-    stop = input("Digite 'sair' para encerrar o programa: ")
+API_KEY = os.getenv("ALPHA_VANTAGE_KEY")
 
-    if stop.lower() == "sair":
-        
-        break
+url = "https://www.alphavantage.co/query"
+
+params = {
+
+    "function": "TIME_SERIES_DAILY",
+    "symbol": "AAPL",
+    "interval": "5min",
+    "apikey": API_KEY
+
+}
